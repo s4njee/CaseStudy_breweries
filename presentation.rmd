@@ -1,0 +1,53 @@
+---
+title: "GDP and Education"
+author: "Sanjee Yogeswaran"
+date: "June 26, 2017"
+output:
+  html_document:
+    keep_md: yes
+---
+
+## Introduction
+
+This is a case study on breweries and their ABV and IBU content.
+
+
+```{r}
+## Code to read in GDP and Education tables
+beers <- read.csv("beers.csv", header=TRUE)
+breweries <- read.csv("breweries.csv",header=TRUE)
+##Code to count number of breweries
+table(breweries$State)
+## Code to merge the two tables together
+mergedtables <- merge(beers,breweries, by.x=("Brewery_id"),by.y = ("Brew_ID"))
+head(mergedtables,6)
+tail(mergedtables,6)
+##Count number of NAs in each column
+colSums(is.na(mergedtables))
+##Compute median alcohol content
+abv <- tapply(mergedtables$ABV,mergedtables$State,median,na.rm=T)
+abv
+##Compute median IBU
+ibu <- tapply(mergedtables$IBU,mergedtables$State,median,na.rm=T)
+ibu
+##Plot bar graphs for ABV and IBU
+library(ggplot2)
+barplot(abv)
+barplot(ibu)
+which.max(abv)
+
+##Max values for ABV and IBU
+max(abv)
+which.max(ibu)
+max(ibu,na.rm=T)
+
+##Summary statistics for ABV
+summary(abv)
+
+##Plot abv vs ibu
+
+qplot(abv,ibu)
+##Regression model
+summary(lm(ibu ~ abv, data=mergedtables))
+```
+
