@@ -1,4 +1,4 @@
-# GDP and Education
+# Beer Breweries Data
 Sanjee Yogeswaran  
 June 26, 2017  
 
@@ -10,9 +10,10 @@ This is a case study on breweries and their ABV and IBU content.
 
 ```r
 ## Code to read in GDP and Education tables
-beers <- read.csv("beers.csv", header=TRUE)
-breweries <- read.csv("breweries.csv",header=TRUE)
-##Code to count number of breweries
+beers <- read.csv("data/beers.csv", header=TRUE)
+breweries <- read.csv("data/breweries.csv",header=TRUE)
+## Question 1:
+##Code to count number of breweries in each state
 table(breweries$State)
 ```
 
@@ -27,7 +28,9 @@ table(breweries$State)
 ```
 
 ```r
+## Question 2:
 ## Code to merge the two tables together
+## Display first 6 rows and last 6 rows
 mergedtables <- merge(beers,breweries, by.x=("Brewery_id"),by.y = ("Brew_ID"))
 head(mergedtables,6)
 ```
@@ -85,6 +88,7 @@ tail(mergedtables,6)
 ```
 
 ```r
+## Question 3:
 ##Count number of NAs in each column
 colSums(is.na(mergedtables))
 ```
@@ -97,6 +101,7 @@ colSums(is.na(mergedtables))
 ```
 
 ```r
+## Question 4:
 ##Compute median alcohol content
 abv <- tapply(mergedtables$ABV,mergedtables$State,median,na.rm=T)
 abv
@@ -149,6 +154,8 @@ barplot(ibu)
 ![](presentation_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
 
 ```r
+## Question 5:
+##Max values for ABV and IBU
 which.max(abv)
 ```
 
@@ -158,7 +165,6 @@ which.max(abv)
 ```
 
 ```r
-##Max values for ABV and IBU
 max(abv)
 ```
 
@@ -184,6 +190,7 @@ max(ibu,na.rm=T)
 ```
 
 ```r
+## Question 6:
 ##Summary statistics for ABV
 summary(abv)
 ```
@@ -194,8 +201,8 @@ summary(abv)
 ```
 
 ```r
+##  Question 7:
 ##Plot abv vs ibu
-
 qplot(abv,ibu)
 ```
 
