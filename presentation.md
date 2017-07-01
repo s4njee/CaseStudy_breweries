@@ -6,7 +6,7 @@ June 26, 2017
 
 This is a case study on breweries and their ABV and IBU content.
 
-
+The number of breweries in each state are as follows:
 
 ```r
 ## Code to read in GDP and Education tables
@@ -26,6 +26,7 @@ table(breweries$State)
 ##  OK  OR  PA  RI  SC  SD  TN  TX  UT  VA  VT  WA  WI  WV  WY 
 ##   6  29  25   5   4   1   3  28   4  16  10  23  20   1   4
 ```
+The two tables are merged together, and the first six and last six entries are shown.
 
 ```r
 ## Question 2:
@@ -86,6 +87,7 @@ tail(mergedtables,6)
 ## 2409 Garrattsville    NY
 ## 2410     Anchorage    AK
 ```
+The number of NAs in each column are displayed below:
 
 ```r
 ## Question 3:
@@ -99,6 +101,7 @@ colSums(is.na(mergedtables))
 ##     Ounces     Name.y       City      State 
 ##          0          0          0          0
 ```
+The median alcohol content and IBU of each state are shown below, along with bar graphs of each for comparison:
 
 ```r
 ## Question 4:
@@ -145,13 +148,15 @@ library(ggplot2)
 barplot(abv)
 ```
 
-![](presentation_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
+![](presentation_files/figure-html/unnamed-chunk-4-1.png)<!-- -->
 
 ```r
 barplot(ibu)
 ```
 
-![](presentation_files/figure-html/unnamed-chunk-1-2.png)<!-- -->
+![](presentation_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+
+The maximum values for ABV and IBU for each state and their respective values are printed below:
 
 ```r
 ## Question 5:
@@ -188,6 +193,7 @@ max(ibu,na.rm=T)
 ```
 ## [1] 61
 ```
+The summary statistics for ABV is printed here:
 
 ```r
 ## Question 6:
@@ -199,6 +205,7 @@ summary(abv)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ## 0.04000 0.05500 0.05600 0.05585 0.05800 0.06250
 ```
+The relationship between bitterness of beer and alcoholic content is explored here. A scatter plot is created as well as a linear regression model.
 
 ```r
 ##  Question 7:
@@ -210,7 +217,7 @@ qplot(abv,ibu)
 ## Warning: Removed 1 rows containing missing values (geom_point).
 ```
 
-![](presentation_files/figure-html/unnamed-chunk-1-3.png)<!-- -->
+![](presentation_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 ##Regression model
@@ -238,4 +245,4 @@ summary(lm(ibu ~ abv, data=mergedtables))
 ## Multiple R-squared:  0.07958,	Adjusted R-squared:  0.0604 
 ## F-statistic:  4.15 on 1 and 48 DF,  p-value: 0.04717
 ```
-
+Conclusion: The data from brewieries in each state are analyzed in this case study. Two datasets are merged together and the total number of breweries in each state are displayed. The first six and last six entries in the merged tables are then displayed. Then the number of non available entries are shown. The median alcohol content and international bitterness units are calculated and plotted on a bar graph. The maximal values for the alcohol content and international bitterness units are found by state and their respective values. Then the summary statistics for alcoholic content is displayed. Finally a relationship between the international bitterness units and alcoholic content is explored through a scatter plot and a linear relationship.

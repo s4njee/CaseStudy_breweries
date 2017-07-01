@@ -11,7 +11,7 @@ output:
 
 This is a case study on breweries and their ABV and IBU content.
 
-
+The number of breweries in each state are as follows:
 ```{r}
 ## Code to read in GDP and Education tables
 beers <- read.csv("data/beers.csv", header=TRUE)
@@ -19,16 +19,24 @@ breweries <- read.csv("data/breweries.csv",header=TRUE)
 ## Question 1:
 ##Code to count number of breweries in each state
 table(breweries$State)
+```
+The two tables are merged together, and the first six and last six entries are shown.
+```{r}
 ## Question 2:
 ## Code to merge the two tables together
 ## Display first 6 rows and last 6 rows
 mergedtables <- merge(beers,breweries, by.x=("Brewery_id"),by.y = ("Brew_ID"))
 head(mergedtables,6)
 tail(mergedtables,6)
+```
+The number of NAs in each column are displayed below:
+```{r}
 ## Question 3:
 ##Count number of NAs in each column
 colSums(is.na(mergedtables))
-
+```
+The median alcohol content and IBU of each state are shown below, along with bar graphs of each for comparison:
+```{r}
 ## Question 4:
 ##Compute median alcohol content
 abv <- tapply(mergedtables$ABV,mergedtables$State,median,na.rm=T)
@@ -40,23 +48,29 @@ ibu
 library(ggplot2)
 barplot(abv)
 barplot(ibu)
+```
 
-
+The maximum values for ABV and IBU for each state and their respective values are printed below:
+```{r}
 ## Question 5:
 ##Max values for ABV and IBU
 which.max(abv)
 max(abv)
 which.max(ibu)
 max(ibu,na.rm=T)
-
+```
+The summary statistics for ABV is printed here:
+```{r}
 ## Question 6:
 ##Summary statistics for ABV
 summary(abv)
-
+```
+The relationship between bitterness of beer and alcoholic content is explored here. A scatter plot is created as well as a linear regression model.
+```{r}
 ##  Question 7:
 ##Plot abv vs ibu
 qplot(abv,ibu)
 ##Regression model
 summary(lm(ibu ~ abv, data=mergedtables))
 ```
-
+Conclusion: The data from brewieries in each state are analyzed in this case study. Two datasets are merged together and the total number of breweries in each state are displayed. The first six and last six entries in the merged tables are then displayed. Then the number of non available entries are shown. The median alcohol content and international bitterness units are calculated and plotted on a bar graph. The maximal values for the alcohol content and international bitterness units are found by state and their respective values. Then the summary statistics for alcoholic content is displayed. Finally a relationship between the international bitterness units and alcoholic content is explored through a scatter plot and a linear relationship.
