@@ -219,6 +219,8 @@ qplot(abv,ibu)
 
 ![](presentation_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
+There is a weak general positive trend shown in the scatter plot. The linear regression below explores this further.
+
 ```r
 ##Regression model
 summary(lm(ibu ~ abv, data=mergedtables))
@@ -245,4 +247,25 @@ summary(lm(ibu ~ abv, data=mergedtables))
 ## Multiple R-squared:  0.07958,	Adjusted R-squared:  0.0604 
 ## F-statistic:  4.15 on 1 and 48 DF,  p-value: 0.04717
 ```
-Conclusion: The data from brewieries in each state are analyzed in this case study. Two datasets are merged together and the total number of breweries in each state are displayed. The first six and last six entries in the merged tables are then displayed. Then the number of non available entries are shown. The median alcohol content and international bitterness units are calculated and plotted on a bar graph. The maximal values for the alcohol content and international bitterness units are found by state and their respective values. Then the summary statistics for alcoholic content is displayed. Finally a relationship between the international bitterness units and alcoholic content is explored through a scatter plot and a linear relationship.
+
+```r
+cor.test(ibu, abv)
+```
+
+```
+## 
+## 	Pearson's product-moment correlation
+## 
+## data:  ibu and abv
+## t = 2.0371, df = 48, p-value = 0.04717
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.004066385 0.519640151
+## sample estimates:
+##       cor 
+## 0.2820948
+```
+The scatter plot shows a weak linear relationship between alcoholic beverage content and international bitterneess units. The adjusted r-squared value of 0.0604 reinforces that it is a weak correlation. The p-value generated in testing the linear model is 0.04, which shows that there is evidence to reject the null hypothesis that there is no correlation, however, since the value is close to 0.05, it shows it is a weak relationship.
+
+##Conclusion
+The data from brewieries in each state are analyzed in this case study. Two datasets are mergeda together and the total number of breweries in each state are displayed. The first six and last six entries in the merged tables are then displayed. Then the number of non available entries are shown. The median alcohol content and international bitterness units are calculated and plotted on a bar graph. The maximal values for the alcohol content and international bitterness units are found by state and their respective values. Then the summary statistics for alcoholic content is displayed. Finally a relationship between the international bitterness units and alcoholic content is explored through a scatter plot and a linear relationship.
