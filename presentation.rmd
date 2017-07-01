@@ -9,7 +9,7 @@ output:
 
 ## Introduction
 
-This is a case study on breweries and their ABV and IBU content.
+This is a case study on breweries and their ABV and IBU content. We explore the data for beer breweries around the United States, and particularly focus on alcoholic content and international bitterness units for these breweries. 
 
 The number of breweries in each state are as follows:
 ```{r}
