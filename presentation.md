@@ -10,8 +10,8 @@ The number of breweries in each state are as follows:
 
 ```r
 ## Code to read in GDP and Education tables
-beers <- read.csv("data/beers.csv", header=TRUE)
-breweries <- read.csv("data/breweries.csv",header=TRUE)
+beers <- read.csv("data/Beers.csv",header=TRUE)
+breweries <- read.csv("data/Breweries.csv",header=TRUE)
 ## Question 1:
 ##Code to count number of breweries in each state
 table(breweries$State)
@@ -155,6 +155,9 @@ barplot(ibu)
 ```
 
 ![](presentation_files/figure-html/unnamed-chunk-4-2.png)<!-- -->
+
+As seen above, the alcoholic beverage content does not vary significantly compared to the international bitterness units among the states.
+
 
 The maximum values for ABV and IBU for each state and their respective values are printed below:
 

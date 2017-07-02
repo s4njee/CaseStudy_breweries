@@ -14,8 +14,8 @@ This is a case study on breweries and their ABV and IBU content. We explore the 
 The number of breweries in each state are as follows:
 ```{r}
 ## Code to read in GDP and Education tables
-beers <- read.csv("data/beers.csv", header=TRUE)
-breweries <- read.csv("data/breweries.csv",header=TRUE)
+beers <- read.csv("data/Beers.csv",header=TRUE)
+breweries <- read.csv("data/Breweries.csv",header=TRUE)
 ## Question 1:
 ##Code to count number of breweries in each state
 table(breweries$State)
@@ -49,6 +49,9 @@ library(ggplot2)
 barplot(abv)
 barplot(ibu)
 ```
+
+As seen above, the alcoholic beverage content does not vary significantly compared to the international bitterness units among the states.
+
 
 The maximum values for ABV and IBU for each state and their respective values are printed below:
 ```{r}
